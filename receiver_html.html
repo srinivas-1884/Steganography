@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Receiver — Extract & Decrypt (dark)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-900 text-gray-200 min-h-screen flex items-center justify-center p-6">
+  <div class="w-full max-w-3xl bg-gray-900 rounded-2xl border border-gray-700 shadow-lg overflow-hidden">
+    <div class="p-6 space-y-4">
+      <header class="flex items-center justify-between">
+        <div>
+          <h1 class="text-2xl font-semibold text-indigo-400">Extract & Decrypt Message</h1>
+          <p class="text-sm text-gray-400 mt-1">AES [Advanced Encryption Standard]-GCM (AES-256) + LSB Steganography — Receiver</p>
+        </div>
+      </header>
+
+      <section class="space-y-3">
+        <label class="text-base text-gray-300 font-medium">Step 1 — Upload stego image</label>
+        <input id="stegoFile" type="file" accept="image/*" class="w-full rounded-lg bg-gray-900/40 border border-gray-700 p-2 text-gray-200" />
+      </section>
+
+      <section class="space-y-2">
+        <label class="text-base text-gray-300 font-medium">Step 2 — Paste base64 AES key</label>
+        <input id="aesKeyInput" placeholder="Paste base64 AES-256 key here" class="w-full rounded-lg bg-gray-900/40 border border-gray-700 p-2 text-gray-200" />
+        <p class="text-xs text-gray-500 mt-1">Key should be the exact base64 string shared by sender.</p>
+      </section>
+
+      <section class="flex items-center gap-3">
+        <button id="extractBtn" class="px-6 py-2 rounded-lg bg-indigo-500 hover:bg-indigo-600 text-white">Extract & Decrypt</button>
+        <button id="clearBtn" class="px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 text-gray-200">Clear</button>
+        <div class="text-sm text-gray-400 ml-auto">Result will appear below</div>
+      </section>
+
+      <section>
+        <label class="text-base text-gray-300 font-medium">Decrypted message</label>
+        <textarea id="outputMessage" readonly rows="6" class="w-full mt-2 rounded-lg bg-gray-900/40 border border-gray-700 p-3 text-gray-100"></textarea>
+      </section>
+
+      <section>
+        <div id="log" class="min-h-[56px] rounded-lg bg-gray-900/40 border border-gray-700 p-3 text-sm text-gray-200"></div>
+      </section>
+    </div>
+    <div class="flex justify-center mt-1 mb-3">
+  <a href="index.html"
+     class="px-4 py-2 rounded-md bg-indigo-500 hover:bg-indigo-600 text-white font-medium shadow">
+    Go to Sender Page
+  </a>
+</div>
+  </div>
+
+  <canvas id="canvas" class="hidden"></canvas>
+
+  <script src="receiver_js.js"></script>
+</body>
+</html>
