@@ -167,7 +167,7 @@ embedBtn.addEventListener("click", async () => {
     const newImgData = embedIntoImageData(imgData, packed);
     ctx.putImageData(newImgData, 0, 0);
 
-    const dataUrl = canvas.toDataURL("image/png");
+    const dataUrl = canvas.toDataURL("image/jpeg", 1.0);
     downloadLink.href = dataUrl;
     downloadLink.classList.remove("hidden");
     setLog("Success — message embedded. Download the image and share the key separately.");
